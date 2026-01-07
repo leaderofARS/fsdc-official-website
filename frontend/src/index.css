@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#050505] antialiased;
+    margin: 0;
+    font-family: "Inter", sans-serif; /* Or any sans font you prefer */
+  }
+}
+
+/* 1. PERMANENT WHITE FLASH FIX */
+html, body, #root {
+  background-color: #050505 !important;
+  margin: 0;
+  padding: 0;
+  color: white;
+  min-height: 100%;
+}
+
+/* 2. SKELETON SHIMMER ANIMATION */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* 3. SWIPER CUSTOMIZATION */
+.team-swiper .swiper-button-next, 
+.team-swiper .swiper-button-prev {
+  color: #a855f7 !important;
+  transform: scale(0.6);
+}
+
+.team-swiper .swiper-pagination-bullet { background: #333; }
+.team-swiper .swiper-pagination-bullet-active { background: #a855f7; }
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #38035e;
+  border-radius: 10px;
+}
+
+
+/* ProfileCard */
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .translate-z-10 {
+    transform: translateZ(10px);
+  }
+  .translate-z-20 {
+    transform: translateZ(20px);
+  }
+  .rotate-x-6 {
+    transform: rotateX(6deg);
+  }
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+}
+
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Specifically for images to prevent the "blue ghost" drag effect */
+img {
+  user-drag: none;
+  -webkit-user-drag: none;
+}
