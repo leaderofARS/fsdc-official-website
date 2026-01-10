@@ -1,10 +1,11 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/team" element={<TeamPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>
       </main>

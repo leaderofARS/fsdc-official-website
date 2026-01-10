@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { Github, Linkedin } from "lucide-react";
 
 const ProfileCard = ({ name, role, image }) => {
   const cardRef = useRef(null);
@@ -40,10 +39,6 @@ const ProfileCard = ({ name, role, image }) => {
         <div className="text-center translate-z-30">
           <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
           <p className="text-purple-400 text-[10px] font-black uppercase tracking-widest mb-4">{role}</p>
-          <div className="flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-            <Github size={18} className="text-gray-400 hover:text-white cursor-pointer" />
-            <Linkedin size={18} className="text-gray-400 hover:text-blue-400 cursor-pointer" />
-          </div>
         </div>
       </div>
     </div>
