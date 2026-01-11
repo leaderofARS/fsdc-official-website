@@ -63,13 +63,13 @@ const Footer = () => {
               >
                 <Instagram size={20} />
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="hover:text-white transition-all hover:-translate-y-1"
                 aria-label="X (formerly Twitter)"
               >
                 <X size={18} />
-              </a>
+              </a> */}
               <a
                 href="#"
                 className="hover:text-blue-600 transition-all hover:-translate-y-1"
@@ -108,18 +108,6 @@ const Footer = () => {
                     className="text-purple-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-300 hidden md:block"
                   />
                   <span className="group-hover:translate-x-1 transition-transform">Team</span>
-                </Link>
-              </li>
-              <li className="flex justify-center md:justify-start group">
-                <Link
-                  to="/projects"
-                  className="flex items-center gap-2 hover:text-white transition-all duration-300"
-                >
-                  <ChevronRight
-                    size={12}
-                    className="text-purple-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all duration-300 hidden md:block"
-                  />
-                  <span className="group-hover:translate-x-1 transition-transform">Projects</span>
                 </Link>
               </li>
               <li className="flex justify-center md:justify-start group">
@@ -186,7 +174,7 @@ const Footer = () => {
               <Mail size={12} /> Email Us
             </a>
             <span className="text-gray-500 text-[10px] uppercase tracking-widest flex items-center gap-2">
-              <Globe size={12} /> v1.1
+              <Globe size={12} /> v1.2
             </span>
           </div>
         </div>
