@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
+import EventsPage from "./pages/EventsPage";
+import GalleryPage from "./pages/GalleryPage";
 
 function App() {
   const location = useLocation();
@@ -21,6 +23,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/gallery/:missionId" element={<GalleryPage />} />
           </Routes>
         </AnimatePresence>
       </main>
