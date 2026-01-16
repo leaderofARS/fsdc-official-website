@@ -12,7 +12,7 @@ const GalleryPage = () => {
   const [error, setError] = useState(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
   
-  // Mobile Optimization: Starting with 6, loading 10 more each time
+  // Pagination State: Start with 6, load 10 more
   const [displayLimit, setDisplayLimit] = useState(6); 
 
   const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -42,16 +42,19 @@ const GalleryPage = () => {
       setError(null);
 
       try {
-        // Fetch with Cache Buster to ensure fresh data after tagging
+        /**
+         * API FETCH LOGIC
+         * We use the ?cb query to bypass CDN caching so new tags show up immediately.
+         */
         const response = await fetch(
           `https://res.cloudinary.com/${CLOUD_NAME}/image/list/${missionId}.json?cb=${Date.now()}`
         );
         
         if (response.status === 401) {
-          throw new Error("401 Unauthorized: Go to Cloudinary Settings > Security and UNCHECK 'Resource List'.");
+          throw new Error(`For Admins Only, "401 Unauthorized: Go to Cloudinary Settings > Security and UNCHECK 'Resource List'."`);
         }
         if (!response.ok) {
-          throw new Error(`Intel not found. Ensure images are tagged with: ${missionId}`);
+          throw new Error(`For Admins Only, "Intel not found. Ensure images are tagged with: ${missionId}"`);
         }
         
         const data = await response.json();
@@ -79,7 +82,7 @@ const GalleryPage = () => {
     <PageTransition>
       <div className="relative min-h-screen pt-24 md:pt-32 pb-20 bg-[#050505] overflow-x-hidden text-white">
         {/* BACKGROUND LAYER */}
-        <div className="fixed inset-0 z-0">
+        <div className="fixed inset-0 z-0 pointer-events-none">
           <Aurora colorStops={["#38035e", "#1a0b33", "#050505"]} blend={0.6} amplitude={1.1} speed={1.8} />
         </div>
 
@@ -88,12 +91,16 @@ const GalleryPage = () => {
           {/* HEADER NAV */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 md:mb-20 gap-8">
             <RevealOnScroll direction="left">
-              <Link to="/events" className="group flex items-center gap-4 text-gray-400 hover:text-white transition-all">
+              {/* Updated Link with Query Parameter to go back to PREVIOUS section */}
+              <Link 
+                to="/events?tab=previous" 
+                className="group flex items-center gap-4 text-gray-400 hover:text-white transition-all"
+              >
                 <div className="p-3 md:p-4 rounded-xl md:rounded-2xl border border-white/5 bg-white/5 group-hover:border-purple-500/50 group-hover:bg-purple-500/10 transition-all">
                   <ArrowLeft size={18} className="md:size-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-base md:text-lg font-bold text-white uppercase italic tracking-tighter leading-none">Registry</span>
+                  <span className="text-base md:text-lg font-bold text-white uppercase italic tracking-tighter leading-none mt-1">Registry</span>
                 </div>
               </Link>
             </RevealOnScroll>
@@ -127,7 +134,7 @@ const GalleryPage = () => {
             </div>
           ) : images.length > 0 ? (
             <>
-              {/* Responsive Masonry-Style Columns (Saves space on mobile) */}
+              {/* Masonry Layout: Responsive Columns */}
               <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 md:gap-10 space-y-6 md:space-y-10">
                 {images.slice(0, displayLimit).map((img, index) => (
                   <RevealOnScroll key={img.id} delay={`${(index % 3) * 100}ms`}>
@@ -161,7 +168,7 @@ const GalleryPage = () => {
           ) : (
             <div className="text-center py-40 border border-dashed border-white/10 rounded-[3rem] bg-white/5">
                <Camera size={48} className="mx-auto text-gray-800 mb-6" />
-               <h3 className="text-2xl font-black italic uppercase tracking-tighter text-gray-500">Zero Captures</h3>
+               <h3 className="text-2xl font-black italic uppercase tracking-tighter text-gray-500 leading-none">Zero Captures</h3>
                <p className="text-[9px] text-gray-700 mt-4 uppercase tracking-[0.4em] font-bold">Verification Failed for: {missionId}</p>
             </div>
           )}

@@ -174,7 +174,7 @@ const Footer = () => {
               <Mail size={12} /> Email Us
             </a>
             <span className="text-gray-500 text-[10px] uppercase tracking-widest flex items-center gap-2">
-              <Globe size={12} /> v1.2
+              <Globe size={12} /> v0.5
             </span>
           </div>
         </div>

@@ -19,6 +19,7 @@ const GithubIcon = ({ size = 20 }) => (
 );
 
 const NavBar = () => {
+  const currentYear = new Date().getFullYear();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -144,7 +145,7 @@ const NavBar = () => {
         </div>
 
         <div className="absolute bottom-12 text-[10px] uppercase tracking-[0.5em] text-gray-700 font-bold">
-          FSDC • 2026
+          FSDC • {currentYear}
         </div>
       </div>
     </header>

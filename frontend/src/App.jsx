@@ -9,6 +9,7 @@ import ContactPage from "./pages/ContactPage";
 import EventsPage from "./pages/EventsPage";
 import GalleryPage from "./pages/GalleryPage";
 import ScrollToTop from "./components/ScrollToTop";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/gallery/:missionId" element={<GalleryPage />} />
+            <Route path="/register/:eventId" element={<RegisterPage />} />
           </Routes>
         </AnimatePresence>
       </main>
