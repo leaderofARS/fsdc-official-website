@@ -1,16 +1,61 @@
-# React + Vite
+# 🚀 FSDC Website - Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This documentation covers the technical architecture and features of the official website for the **Full Stack Development Club (FSDC)**, from the high-impact **Homepage** to the elite **Team Roster**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎨 Visual Identity & UI/UX
+The website follows a "Techno-Neon" aesthetic, utilizing a deep \`#050505\` background with vibrant purple (\`#a855f7\`) accents.
 
-## React Compiler
+* **Aurora Engine**: A custom GPU-accelerated background that creates a fluid, deep-space aurora effect across all pages.
+* **Page Transitions**: Smooth Framer Motion-based entry/exit animations for a seamless "Single Page Application" feel.
+* **Reveal-on-Scroll**: Components use Intersection Observers to slide or fade into view as the user scrolls.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🏠 Modules Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Landing & Homepage
+* **Hero Section**: Bold typography with a focus on "Innovation" and "Development".
+* **Navigation**: A glassmorphic header that adapts its transparency based on scroll position.
+
+### 2. Team Page (Executive Council)
+The flagship feature of the site, showcasing leadership with an elite interactive experience:
+
+* **Coverflow Swiper**: A 3D-rotating carousel that brings the active profile card to the forefront.
+* **Accumulating Timeline (PC)**: A custom progress indicator where dots fill with color as the user swipes.
+    * **Logic**: Uses CSS sibling selectors (\`:has(~ .active)\`) to highlight all "past" dots.
+    * **Reset**: Automatically clears all color when the user loops back from the last member to the first.
+* **Timed Progress Bar**: The active dot expands into a 60px bar that fills in real-time based on autoplay delay.
+* **Mobile Adaptive**: The timeline is automatically hidden on mobile devices (under 768px) to prioritize card visibility.
+
+---
+
+## 🛠️ Technical Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Frontend** | React.js |
+| **Styling** | Tailwind CSS |
+| **Slider** | Swiper.js (Autoplay, Coverflow, Pagination) |
+| **Icons** | Lucide React |
+| **Animations** | Framer Motion & CSS Sibling Logic |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/          # Compressed images for team/mentors
+├── components/      # Reusable UI (Aurora, ProfileCard, PageTransition)
+├── pages/           # Main route views (Homepage, TeamPage)
+└── App.jsx          # Route management
+```
+
+---
+
+## 🚀 Future Roadmap
+* **Events Module**: Integration with a backend for live event updates.
+* **Contact System**: Secure form handling for club inquiries.
+* **Mobile Enhancements**: Further touch-gesture optimizations for navigation.
