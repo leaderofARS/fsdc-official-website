@@ -8,13 +8,14 @@ import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
 import EventsPage from "./pages/EventsPage";
 import GalleryPage from "./pages/GalleryPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const location = useLocation();
 
   return (
     <div className="bg-[#050505] min-h-screen text-white flex flex-col">
-
+      <ScrollToTop />
       <NavBar />
 
       <main className="flex-grow">
